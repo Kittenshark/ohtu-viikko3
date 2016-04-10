@@ -37,10 +37,10 @@ public class App {
     
     private void continueRun(String command) {
         if (command.equals("new")) {
-                newUser();
-            } else if (command.equals("login")) {
-                login();
-            }
+            newUser();
+        } else if (command.equals("login")) {
+            login();
+        }
     }
     
     

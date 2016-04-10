@@ -15,12 +15,13 @@ public class AuthenticationService {
 
     public boolean logIn(String username, String password) {
         for (User user : userDao.listAll()) {
-            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                return true;
-            }
+            return checkLogin(user, username, password);
         }
-
         return false;
+    }
+    
+    public boolean checkLogin(User user, String username, String password) {
+        return user.getUsername().equals(username) && user.getPassword().equals(password);
     }
 
     public boolean createUser(String username, String password) {
@@ -40,11 +41,8 @@ public class AuthenticationService {
     private boolean invalid(String username, String password) {
         // validity check of username and password
 	if (password.length() < 8 || username.length() < 3) {
-		return true;	
+            return true;	
 	}
-	if (!password.matches(".*\\d.*")) {
-		return true;
-	}
-        return false;
+        return !password.matches(".*\\d.*");
     }
 }
