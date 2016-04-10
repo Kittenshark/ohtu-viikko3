@@ -42,7 +42,7 @@ public class AuthenticationService {
 	if (password.length() < 8 || username.length() < 3) {
 		return true;	
 	}
-	if (password.matches(".*\\d.*")) {
+	if (!password.matches(".*\\d.*")) {
 		return true;
 	}
         return false;
