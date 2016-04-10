@@ -15,7 +15,9 @@ public class AuthenticationService {
 
     public boolean logIn(String username, String password) {
         for (User user : userDao.listAll()) {
-            return checkLogin(user, username, password);
+            if (checkLogin(user, username, password)) {
+                return true;
+            }
         }
         return false;
     }
