@@ -28,18 +28,21 @@ public class App {
     public void run() {
         while (true) {
             String command = io.readLine(">");
-
             if (command.isEmpty()) {
                 break;
             }
-            if (command.equals("new")) {
+            continueRun(command);
+        }
+    }
+    
+    private void continueRun(String command) {
+        if (command.equals("new")) {
                 newUser();
             } else if (command.equals("login")) {
                 login();
             }
-
-        }
     }
+    
     
     private void newUser() {
         String[] usernameAndPasword = ask();
@@ -63,13 +66,7 @@ public class App {
 	ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/resources/spring-context.xml");
 
     	App application = ctx.getBean(App.class);
-    	application.run();
-	/*        
-	UserDao dao = new InMemoryUserDao();
-        IO io = new ConsoleIO();
-        AuthenticationService auth = new AuthenticationService(dao);
-        new App(io, auth).run();
-	*/
+    	application.run();    
     }
     
     // testejä debugatessa saattaa olla hyödyllistä testata ohjelman ajamista

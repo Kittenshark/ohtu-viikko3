@@ -15,8 +15,12 @@
 
     <bean id="io" class="ohtu.io.ConsoleIO">
     </bean>
+    
+    <bean id="dao" class="ohtu.data_access.InMemoryUserDaoUserDao">
+    </bean>
 
     <bean id="auth" class="ohtu.services.AuthenticationService">
+        <constructor-arg ref="dao"/>
     </bean>
 
     <bean id="app" class="ohtu.App">
